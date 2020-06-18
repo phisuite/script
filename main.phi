@@ -1,0 +1,27 @@
+event? RegisterUserRequested:0.1
+  string name
+  number? age
+
+event! RegisterUserSucceed:0.1
+  string id
+  string name
+
+event? RegisterUserFailed:0.1
+  string message
+
+entity! User:0.1
+  string id
+  string name
+  number? age
+
+entity? Error:0.1
+  string message
+
+process~ RegisterUser:0.1
+  input RegisterUserRequested:0.1
+  output RegisterUserSucceed:0.1
+  error RegisterUserFailed:0.1
+
+  input User:0.1
+  output User:0.1
+  error Error:0.1
